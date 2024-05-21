@@ -1,4 +1,6 @@
-import { TextComponent } from 'react-native';
-import SpaceComponent from './SpaceComponent';
 
-export {SpaceComponent, TextComponent};
+import SpaceComponent from './SpaceComponent';
+import ButtonComponent from './ButtonComponent';
+import TextComponent from './TextComponent';
+
+export {SpaceComponent, TextComponent, ButtonComponent};

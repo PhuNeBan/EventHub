@@ -4,5 +4,5 @@ export const fontFamilies = {
     light: 'AirbnbCereal_W_Lt',
     medium: 'AirbnbCereal_W_Md',
     black: 'AirbnbCereal_W_Blk',
-    bold: 'AirbnbCereal_W_xBd',
+    bold: 'AirbnbCereal_W_XBd',
 }

@@ -1,7 +1,17 @@
-import {View, Text, StyleProp, ViewStyle, TextStyle} from 'react-native';
+import {
+  View,
+  Text,
+  StyleProp,
+  ViewStyle,
+  TextStyle,
+  TouchableOpacity,
+} from 'react-native';
 import React, {ReactNode} from 'react';
-import {TouchableOpacity} from 'react-native-gesture-handler';
+
 import TextComponent from './TextComponent';
+import {globalStyles} from '../styles/globalStyles';
+import {appColors} from '../constants/appColors';
+import {fontFamilies} from '../constants/fontFamilies';
 
 interface Props {
   icon?: ReactNode;
@@ -10,28 +20,49 @@ interface Props {
   color?: string;
   styles?: StyleProp<ViewStyle>;
   textColor?: string;
-  textStyle?: StyleProp<TextStyle>;
+  textStyles?: StyleProp<TextStyle>;
   onPress?: () => void;
-  iconflex?: 'right' | 'left';
+  iconFlex?: 'right' | 'left';
 }
 
 const ButtonComponent = (props: Props) => {
   const {
     icon,
     text,
-    type,
+    textColor,
+    textStyles,
     color,
     styles,
-    textColor,
-    textStyle,
     onPress,
-    iconflex,
+    iconFlex,
+    type,
   } = props;
-  return (
+  return type === 'primary' ? (
+    <TouchableOpacity
+      onPress={onPress}
+      style={[
+        globalStyles.button,
+        {
+          backgroundColor: color ?? appColors.primary,
+        },
+        styles,
+      ]}>
+      <TextComponent
+        text={text}
+        color={textColor ?? appColors.white}
+        styles={[
+          textStyles,
+          {
+            marginLeft: icon ? 12 : 0,
+          },
+        ]}
+        flex={icon && iconFlex === 'right' ? 1 : 0}
+      />
+      {icon && iconFlex === 'right' && icon}
+    </TouchableOpacity>
+  ) : (
     <TouchableOpacity>
-      {icon && iconflex === 'left' && icon}
-      <TextComponent text={text} color={textColor} styles={textStyle} />
-      {icon && iconflex === 'right' && icon}
+      <TextComponent text={text} color={type === 'link' ? appColors.primary : appColors.text}/>
     </TouchableOpacity>
   );
 };
