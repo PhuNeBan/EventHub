@@ -1,5 +1,3 @@
-import SpaceComponent from './SpaceComponent'
+import SpaceComponent from './SpaceComponent';
 
-export {
-    SpaceComponent,
-}
+export {SpaceComponent};
