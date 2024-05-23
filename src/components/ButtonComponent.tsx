@@ -47,6 +47,7 @@ const ButtonComponent = (props: Props) => {
         },
         styles,
       ]}>
+      {icon && icon}
       <TextComponent
         text={text}
         color={textColor ?? appColors.white}
@@ -54,15 +55,20 @@ const ButtonComponent = (props: Props) => {
           textStyles,
           {
             marginLeft: icon ? 12 : 0,
+            fontSize: 16,
           },
         ]}
         flex={icon && iconFlex === 'right' ? 1 : 0}
+        font={fontFamilies.medium}
       />
       {icon && iconFlex === 'right' && icon}
     </TouchableOpacity>
   ) : (
     <TouchableOpacity>
-      <TextComponent text={text} color={type === 'link' ? appColors.primary : appColors.text}/>
+      <TextComponent
+        text={text}
+        color={type === 'link' ? appColors.primary : appColors.text}
+      />
     </TouchableOpacity>
   );
 };
