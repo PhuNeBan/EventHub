@@ -14,26 +14,15 @@ import {Lock, Sms} from 'iconsax-react-native';
 import SocialLogin from './components/SocialLogin';
 import {fontFamilies} from '../../constants/fontFamilies';
 
-const LoginScreen = ({navigation} : any) => {
+const SignUpScreen = ({navigation} : any) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isRemember, setIsRemember] = useState(true);
 
   return (
-    <ContainerConponent isImageBackground>
-      <SectionComponent
-        style={{
-          justifyContent: 'center',
-          alignItems: 'center',
-          marginTop: 75,
-        }}>
-        <Image
-          source={require('../../assets/images/text-logo.png')}
-          style={{width: 162, height: 114, marginBottom: 30}}
-        />
-      </SectionComponent>
+    <ContainerConponent isImageBackground back>
       <SectionComponent>
-        <TextComponent size={24} title text="Sign in" />
+        <TextComponent size={24} title text="Sign up" />
         <SpaceComponent height={21} />
         <InputComponent
           value={email}
@@ -50,35 +39,19 @@ const LoginScreen = ({navigation} : any) => {
           allowClear
           affix={<Lock size={22} color={appColors.gray}></Lock>}
         />
-        <RowComponent justify="space-between">
-          <RowComponent onPress={() => setIsRemember(!isRemember)}>
-            <Switch
-              trackColor={{true: appColors.primary}}
-              thumbColor={appColors.white}
-              value={isRemember}
-              onChange={() => setIsRemember(!isRemember)}
-            />
-            <TextComponent text="Remember me" />
-          </RowComponent>
-          <ButtonComponent
-            text="Forgot password?"
-            onPress={() => {}}
-            type="text"
-          />
-        </RowComponent>
       </SectionComponent>
       <SpaceComponent height={16} />
       <SectionComponent>
-        <ButtonComponent text="SIGN IN" type="primary" />
+        <ButtonComponent text="SIGN UP" type="primary" />
       </SectionComponent>
       <SocialLogin />
       <SectionComponent>
         <RowComponent justify="center">
           <TextComponent text="Don’t have an account? " />
           <ButtonComponent
-            text="Sign up"
+            text="Login"
             type="link"
-            onPress={() => navigation.navigate('SignUpScreen')}
+            onPress={() => navigation.navigate('LoginScreen')}
           />
         </RowComponent>
       </SectionComponent>
@@ -86,5 +59,5 @@ const LoginScreen = ({navigation} : any) => {
   );
 };
 
-export default LoginScreen;
+export default SignUpScreen;
 const styles = StyleSheet.create({});
