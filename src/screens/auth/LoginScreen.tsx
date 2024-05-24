@@ -1,5 +1,6 @@
-import React, {useState} from 'react';
-import {Image, StyleSheet, Switch} from 'react-native';
+import { Lock, Sms } from 'iconsax-react-native';
+import React, { useState } from 'react';
+import { Image, StyleSheet, Switch } from 'react-native';
 import {
   ButtonComponent,
   ContainerConponent,
@@ -9,10 +10,8 @@ import {
   SpaceComponent,
   TextComponent,
 } from '../../components';
-import {appColors} from '../../constants/appColors';
-import {Lock, Sms} from 'iconsax-react-native';
+import { appColors } from '../../constants/appColors';
 import SocialLogin from './components/SocialLogin';
-import {fontFamilies} from '../../constants/fontFamilies';
 
 const LoginScreen = ({navigation} : any) => {
   const [email, setEmail] = useState('');
