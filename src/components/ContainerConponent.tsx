@@ -4,9 +4,9 @@ import {
   ImageBackground,
   SafeAreaView,
   TouchableOpacity,
+  ScrollView,
 } from 'react-native';
 import React, {ReactNode} from 'react';
-import {ScrollView} from 'react-native-gesture-handler';
 import {globalStyles} from '../styles/globalStyles';
 import {useNavigation} from '@react-navigation/native';
 import {ButtonComponent, RowComponent, TextComponent} from '.';

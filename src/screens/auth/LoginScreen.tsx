@@ -20,7 +20,7 @@ const LoginScreen = ({navigation} : any) => {
   const [isRemember, setIsRemember] = useState(true);
 
   return (
-    <ContainerConponent isImageBackground>
+    <ContainerConponent isImageBackground isScroll>
       <SectionComponent
         style={{
           justifyContent: 'center',
@@ -62,7 +62,7 @@ const LoginScreen = ({navigation} : any) => {
           </RowComponent>
           <ButtonComponent
             text="Forgot password?"
-            onPress={() => {}}
+            onPress={() => navigation.navigate('ForgotPasswordSrceen')}
             type="text"
           />
         </RowComponent>

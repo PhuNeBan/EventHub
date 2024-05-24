@@ -1,5 +1,6 @@
-import React, {useState} from 'react';
-import {Image, StyleSheet, Switch} from 'react-native';
+import { Lock, Sms, User } from 'iconsax-react-native';
+import React, { useState } from 'react';
+import { StyleSheet } from 'react-native';
 import {
   ButtonComponent,
   ContainerConponent,
@@ -9,32 +10,58 @@ import {
   SpaceComponent,
   TextComponent,
 } from '../../components';
-import {appColors} from '../../constants/appColors';
-import {Lock, Sms} from 'iconsax-react-native';
+import { appColors } from '../../constants/appColors';
 import SocialLogin from './components/SocialLogin';
-import {fontFamilies} from '../../constants/fontFamilies';
 
-const SignUpScreen = ({navigation} : any) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [isRemember, setIsRemember] = useState(true);
+const initVaLue = {
+  username: '',
+  email: '',
+  password: '',
+  confirmPassword: '',
+};
+
+const SignUpScreen = ({navigation}: any) => {
+  const [values, setValues] = useState(initVaLue);
+
+  const handleChangeValue = (key: string, value: string) => {
+    const data: any = {...values};
+
+    data[`${key}`] = value;
+
+    setValues(data);
+  };
 
   return (
-    <ContainerConponent isImageBackground back>
+    <ContainerConponent isImageBackground isScroll  back>
       <SectionComponent>
         <TextComponent size={24} title text="Sign up" />
         <SpaceComponent height={21} />
         <InputComponent
-          value={email}
-          placeholder="Email"
-          onChange={val => setEmail(val)}
+          value={values.username}
+          placeholder="Full name"
+          onChange={val => handleChangeValue('username', val)}
+          allowClear
+          affix={<User size={22} color={appColors.gray}></User>}
+        />
+        <InputComponent
+          value={values.email}
+          placeholder="abc@email.com"
+          onChange={val => handleChangeValue('email', val)}
           allowClear
           affix={<Sms size={22} color={appColors.gray}></Sms>}
         />
         <InputComponent
-          value={password}
-          placeholder="Password"
-          onChange={val => setPassword(val)}
+          value={values.password}
+          placeholder="Your password"
+          onChange={val => handleChangeValue('password',val)}
+          isPassword
+          allowClear
+          affix={<Lock size={22} color={appColors.gray}></Lock>}
+        />
+         <InputComponent
+          value={values.confirmPassword}
+          placeholder="Confirm password"
+          onChange={val => handleChangeValue('confrimPassword',val)}
           isPassword
           allowClear
           affix={<Lock size={22} color={appColors.gray}></Lock>}
@@ -47,9 +74,9 @@ const SignUpScreen = ({navigation} : any) => {
       <SocialLogin />
       <SectionComponent>
         <RowComponent justify="center">
-          <TextComponent text="Don’t have an account? " />
+          <TextComponent text="Already have an account? " />
           <ButtonComponent
-            text="Login"
+            text="Signin"
             type="link"
             onPress={() => navigation.navigate('LoginScreen')}
           />
